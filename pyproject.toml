@@ -1,5 +1,5 @@
 [project]
-name = "Alien Invasion"
+name = "AlienInvasion"
 description = "2D arcade Python-based game using pygame"
 version = "1.0.0"
 dependencies = ["pygame"]
@@ -12,3 +12,22 @@ authors = [
 
 [project.urls]
 HomePage = "https://github.com/Mahan-RN/Alien-Invasion"
+
+[tool.pyright]
+include = ["src", "tests"]
+exclude = ["**/node_modules",
+    "**/__pycache__",
+    "src/experimental",
+    "src/typestubs"
+]
+stubPath = "src/stubs"
+reportMissingImports = "error"
+reportMissingTypeStubs = false
+reportUnusedImport = true
+reportUnusedVariable = true
+pythonVersion = "3.13"
+pythonPlatform = "Windows"
+executionEnvironments = [
+  { root = "src" },
+  { root = "tests" }
+]
