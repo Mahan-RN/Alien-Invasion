@@ -1,0 +1,14 @@
+[project]
+name = "Alien Invasion"
+description = "2D arcade Python-based game using pygame"
+version = "1.0.0"
+dependencies = ["pygame"]
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  {name = "Mahan Rafieenaini", email = "mahanrn@student.ubc.ca"},
+]
+
+[project.urls]
+HomePage = "https://github.com/Mahan-RN/Alien-Invasion"
