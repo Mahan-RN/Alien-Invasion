@@ -1,5 +1,6 @@
 import sys
 import pygame
+from pygame.event import Event
 
 from settings import Settings
 import space_ship as ss
@@ -13,9 +14,9 @@ class AlienInvasion:
         pygame.init()
 
         self.settings = Settings()
-        self.screen = pygame.display.set_mode(
-            (self.settings.WIDTH, self.settings.HEIGHT)
-        )
+        self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+        self.settings.width = self.screen.get_rect().width
+        self.settings.height = self.screen.get_rect().height
         self.clock = pygame.time.Clock()
         self.ship = ss.Ship(self)
         pygame.display.set_caption("Alien Invasion")
@@ -34,15 +35,9 @@ class AlienInvasion:
             if event.type == pygame.QUIT:
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
-                    self.ship.moving_right = True
-                elif event.key == pygame.K_LEFT:
-                    self.ship.moving_left = True
+                self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
-                if event.key == pygame.K_RIGHT:
-                    self.ship.moving_right = False
-                elif event.key == pygame.K_LEFT:
-                    self.ship.moving_left = False
+                self._check_keyup_events(event)
 
     def _update_screen(self):
         """Update images on the screen and filp to the new screen"""
@@ -51,6 +46,30 @@ class AlienInvasion:
         self.ship.blitme()
         # Make the most recently drawn screen visible
         pygame.display.flip()
+
+    def _check_keydown_events(self, event: Event):
+        """Respond to key presses
+
+        Args:
+            event (Event): KEYDOWN event
+        """
+        if event.key == pygame.K_RIGHT:
+            self.ship.moving_right = True
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = True
+        elif event.key == pygame.K_q:
+            sys.exit()
+
+    def _check_keyup_events(self, event: Event):
+        """Respond to key releases
+
+        Args:
+            event (Event): KEYUP event
+        """
+        if event.key == pygame.K_RIGHT:
+            self.ship.moving_right = False
+        elif event.key == pygame.K_LEFT:
+            self.ship.moving_left = False
 
 
 if __name__ == "__main__":

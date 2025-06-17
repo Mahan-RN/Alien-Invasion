@@ -5,10 +5,11 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
 
+
 class Ship:
     """A class to manage the ship"""
 
-    def __init__(self, ai_game: 'AlienInvasion') -> None:
+    def __init__(self, ai_game: "AlienInvasion") -> None:
         """Initialize the ship and set its starting position
 
         Args:
@@ -31,18 +32,16 @@ class Ship:
         self.moving_right: bool = False
         self.moving_left: bool = False
 
-
     def blitme(self):
         """Draw the ship at its current location"""
         self.screen.blit(self.image, self.rect)
 
     def update(self):
-        """Update the ship's position based on the movement flag
-        """        
+        """Update the ship's position based on the movement flag"""
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
         if self.moving_left and self.rect.left > 0:
             self.x -= self.settings.ship_speed
-        
+
         # Update the rect object from the self.x
         self.rect.x = int(self.x)
