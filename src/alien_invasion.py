@@ -29,7 +29,7 @@ class AlienInvasion:
             self._update_screen()
             self.clock.tick(60)
 
-    def _check_events(self):
+    def _check_events(self) -> None:
         """Respond to key and mouse events"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -39,7 +39,7 @@ class AlienInvasion:
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
 
-    def _update_screen(self):
+    def _update_screen(self) -> None:
         """Update images on the screen and filp to the new screen"""
         # Redraw the screen during each pass through the loop
         self.screen.fill(self.settings.BACKGROUND_COLOR)
@@ -47,7 +47,7 @@ class AlienInvasion:
         # Make the most recently drawn screen visible
         pygame.display.flip()
 
-    def _check_keydown_events(self, event: Event):
+    def _check_keydown_events(self, event: Event) -> None:
         """Respond to key presses
 
         Args:
@@ -60,7 +60,7 @@ class AlienInvasion:
         elif event.key == pygame.K_q:
             sys.exit()
 
-    def _check_keyup_events(self, event: Event):
+    def _check_keyup_events(self, event: Event) -> None:
         """Respond to key releases
 
         Args:
