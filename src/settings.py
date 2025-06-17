@@ -5,6 +5,7 @@ class Settings:
 
     def __init__(self) -> None:
         """A class to store all settings of the game"""
+        
         # Screen Settings
         self.width: int
         self.height: int
