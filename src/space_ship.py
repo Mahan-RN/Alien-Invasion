@@ -23,6 +23,7 @@ class Ship:
         self.rect.midbottom = self.screen_rect.midbottom
         # Movement flag; start with a ship that's not moving
         self.moving_right: bool = False
+        self.moving_left: bool = False
 
 
     def blitme(self):
@@ -34,3 +35,5 @@ class Ship:
         """        
         if self.moving_right:
             self.rect.x += 1
+        if self.moving_left:
+            self.rect.x -= 1
