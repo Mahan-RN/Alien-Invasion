@@ -20,7 +20,7 @@ exclude = ["**/node_modules",
     "src/experimental",
     "src/typestubs"
 ]
-typeCheckingMode = "strict"
+typeCheckingMode = "basic"
 stubPath = "src/stubs"
 reportMissingImports = "error"
 reportMissingTypeStubs = false

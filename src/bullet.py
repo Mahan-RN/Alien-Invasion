@@ -1,5 +1,5 @@
 import pygame
-from pygame.sprite import Sprite
+from pygame.sprite import Sprite, AbstractGroup
 from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
@@ -9,13 +9,12 @@ if TYPE_CHECKING:
 class Bullet(Sprite):
     """Represents a bullet shot by the spaceship in the game"""
 
-    def __init__(self, ai_game: "AlienInvasion") -> None:
-        super().__init__()
+    def __init__(self, ai_game: "AlienInvasion", *groups: AbstractGroup) -> None:
+        super().__init__(*groups)
         self.screen = ai_game.screen
         self.settings = ai_game.settings
-        self.color = self.settings.bullet_color
 
-        self.image = pygame.image.load("src/resources/images/space_ship_image.png")
+        self.image = pygame.image.load("src/resources/images/bullet_image.png")
         self.rect = self.image.get_rect()
 
         # Set bullet's midpoint to the midpoint of the spaceship
