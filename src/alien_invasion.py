@@ -34,6 +34,7 @@ class AlienInvasion:
             self._check_events()
             self.ship.update()
             self._update_bullets()
+            self._update_aliens()
             self._update_screen()
             self.clock.tick(60)
 
@@ -119,7 +120,7 @@ class AlienInvasion:
 
             # Finished a row; reset x-value, and increment y-value
             current_x = alien_width
-            current_y += 2* alien_height
+            current_y += 2 * alien_height
 
     def _create_alien(self, x_position: int, y_position: int):
         """Create an alien and place it in the row"""
@@ -128,6 +129,10 @@ class AlienInvasion:
         new_alien.rect.x = x_position
         new_alien.rect.y = y_position
         self.aliens.add(new_alien)
+
+    def _update_aliens(self):
+        """Update the position of all aliens in the fleet"""
+        self.aliens.update()
 
 
 if __name__ == "__main__":
