@@ -9,3 +9,7 @@ https://opengameart.org/content/pixel-bullet
 
 3- Aline Image: 
 https://opengameart.org/content/space-shooter-top-down-2d-pixel-art
+
+Note: directly using the alien image provided in the link above was causing 
+"libpng warning: iCCP: known incorrect sRGB profile" warning when running the game, 
+which I fixed by using https://www.cmyk2rgb.com/ and selecting the sRGB profile
