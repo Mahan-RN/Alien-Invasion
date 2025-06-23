@@ -6,6 +6,7 @@ from pygame.sprite import Group
 from settings import Settings
 import space_ship as ss
 from bullet import Bullet
+from alien import Alien
 
 
 class AlienInvasion:
@@ -22,6 +23,9 @@ class AlienInvasion:
         self.clock = pygame.time.Clock()
         self.ship = ss.Ship(self)
         self.bullets = Group()
+        self.aliens = Group()
+
+        self._create_fleet()
         pygame.display.set_caption("Alien Invasion")
 
     def run_game(self) -> None:
@@ -33,6 +37,7 @@ class AlienInvasion:
             self._update_screen()
             self.clock.tick(60)
 
+    ## Helpers for running the game
     def _check_events(self) -> None:
         """Respond to key and mouse events"""
         for event in pygame.event.get():
@@ -50,9 +55,11 @@ class AlienInvasion:
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.ship.blitme()
+        self.aliens.draw(self.screen)
         # Make the most recently drawn screen visible
         pygame.display.flip()
 
+    ## Helpers for game controls
     def _check_keydown_events(self, event: Event) -> None:
         """Respond to key presses
 
@@ -79,13 +86,14 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = False
 
-    def _fire_bullet(self):
+    ## Helpers for bullets
+    def _fire_bullet(self) -> None:
         """Create a new bullet and add it to the bullets group"""
         if len(self.bullets) < self.settings.bullets_allowed:
             new_bullet = Bullet(self)
             self.bullets.add(new_bullet)
 
-    def _update_bullets(self):
+    def _update_bullets(self) -> None:
         """Update position of bullets and get rid of old bullets"""
         # Update bullet positions
         self.bullets.update()
@@ -94,6 +102,13 @@ class AlienInvasion:
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
                 self.bullets.remove(bullet)
+
+    ## Helpers for aliens
+    def _create_fleet(self) -> None:
+        """Create the fleet of aliens"""
+        # Make an alien
+        alien = Alien(self)
+        self.aliens.add(alien)
 
 
 if __name__ == "__main__":
