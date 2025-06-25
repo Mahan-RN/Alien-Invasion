@@ -84,6 +84,7 @@ class AlienInvasion:
             self.settings.initialize_dynamic_settings()
             # Reset the game statistics
             self.stats.reset_stats()
+            self.sb.prep_score()
             self.game_active = True
             # Get rid of any remaining bullets and aliens
             self.aliens.empty()
@@ -209,7 +210,8 @@ class AlienInvasion:
         # Remove any bullets and alies that have collided
         collisions = pygame.sprite.groupcollide(self.bullets, self.aliens, True, True)
         if collisions:
-            self.stats.score += self.settings.alien_points
+            for aliens in collisions.values():
+                self.stats.score += self.settings.alien_points * len(aliens)
             self.sb.prep_score()
         # Destroy existing bullets and create new fleet if all aliens are
         # destroyed
@@ -240,7 +242,7 @@ class AlienInvasion:
             pygame.mouse.set_visible(True)
 
     ## Helper for when alien(s) reach bottom of the screen
-    def _check_aliens_bottom(self):
+    def _check_aliens_bottom(self) -> None:
         """Check if any aliens have reached the bottom of the screen"""
         for alien in self.aliens.sprites():
             if alien.rect.bottom >= self.settings.height:
