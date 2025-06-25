@@ -1,7 +1,11 @@
-# Alien-Invasion :alien:
+# Alien-Invasion :alien: :rocket: :statue_of_liberty:
 A Python-based 2D arcade shooter game made with Pygame
 # 1- Introduction
 Alien Invasion is my first Python project, based on Python Crash Course (3rd Edition)[^1], with some minor visual tweaks for more appealing gameplay visuals and (very basic) static type-checking using Pyright[^2]. 
+
+[^1]: Matthes, E. (2023). *Python crash course: a hands-on, project-based introduction to programming*. 3rd edition. No Starch Press.
+
+[^2]: https://github.com/microsoft/pyright
 
 ## Gameplay :video_game:
 Here's a sample gameplay:
@@ -9,7 +13,7 @@ Here's a sample gameplay:
 ![Sample Gameplay](sample_gameplay.gif)
 
 ### Controls
-- **Movement:** left and right arrow keys
+- **Movement:** left :arrow_left: and right :arrow_right: arrow keys
 - **Shooting:** space key
 
 
@@ -38,22 +42,3 @@ All gameplay art used in this project are copyright-free.
 - Alien art: https://opengameart.org/content/space-shooter-top-down-2d-pixel-art \
 (*Note: directly using the alien image provided in the link above was causing "libpng warning: iCCP: known incorrect sRGB profile" warning when running the game, which I fixed by using https://www.cmyk2rgb.com/ and selecting the sRGB profile*)
 - Background art:  https://craftpix.net/freebies/free-sky-with-clouds-background-pixel-art-set/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[^1]: Matthes, E. (2023). *Python crash course: a hands-on, project-based introduction to programming*. 3rd edition. No Starch Press.
-
-[^2]: https://github.com/microsoft/pyright
