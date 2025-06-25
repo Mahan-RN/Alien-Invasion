@@ -11,6 +11,7 @@ import space_ship as ss
 from bullet import Bullet
 from alien import Alien
 from button import Button
+from scoreboard import Scoreboard
 
 
 class AlienInvasion:
@@ -39,8 +40,9 @@ class AlienInvasion:
         self._create_fleet()
         pygame.display.set_caption("Alien Invasion")
 
-        # Create an instance to store game statistics
+        # Create an instance to store game statistics and scoreboard
         self.stats = GameStats(self)
+        self.sb = Scoreboard(self)
 
         # Start Alien Invasion game in an inactive state
         self.game_active: bool = False
@@ -99,7 +101,8 @@ class AlienInvasion:
             bullet.draw_bullet()
         self.ship.blitme()
         self.aliens.draw(self.screen)
-
+        # Draw the score information
+        self.sb.show_score()
         # Draw the play button if the game is inactive
         if not self.game_active:
             self.play_button.draw_button()
