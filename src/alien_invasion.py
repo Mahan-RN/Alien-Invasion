@@ -41,8 +41,8 @@ class AlienInvasion:
         # Create an instance to store game statistics
         self.stats = GameStats(self)
 
-        # Start Alien Invasion game in an active state
-        self.game_active: bool = True
+        # Start Alien Invasion game in an inactive state
+        self.game_active: bool = False
 
     def run_game(self) -> None:
         """Start the main loop for the game"""
