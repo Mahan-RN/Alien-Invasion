@@ -208,6 +208,7 @@ class AlienInvasion:
         if not self.aliens:
             self.bullets.empty()
             self._create_fleet()
+            self.settings.increase_speed()
 
     ## Helpers for alien-ship collisions
     def _ship_hit(self) -> None:
