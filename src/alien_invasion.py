@@ -85,6 +85,7 @@ class AlienInvasion:
             # Reset the game statistics
             self.stats.reset_stats()
             self.sb.prep_score()
+            self.sb.prep_level()
             self.game_active = True
             # Get rid of any remaining bullets and aliens
             self.aliens.empty()
@@ -164,7 +165,7 @@ class AlienInvasion:
         alien_width, alien_height = alien.rect.size
 
         current_x, current_y = alien_width, alien_height
-        while current_y < (self.settings.height - 16 * alien_height):
+        while current_y < (self.settings.height - 25 * alien_height):
             while current_x < (self.settings.width - 2 * alien_width):
                 self._create_alien(current_x, current_y)
                 current_x += 2 * alien_width
@@ -220,6 +221,10 @@ class AlienInvasion:
             self.bullets.empty()
             self._create_fleet()
             self.settings.increase_speed()
+
+            # Increase level
+            self.stats.level += 1
+            self.sb.prep_level()
 
     ## Helpers for alien-ship collisions
     def _ship_hit(self) -> None:
