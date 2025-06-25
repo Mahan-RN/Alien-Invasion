@@ -11,6 +11,7 @@ Here's a sample gameplay:
 ### Controls
 - **Movement:** left :arrow_left: and right :arrow_right: arrow keys
 - **Shooting:** space key
+- **Exit:** `Q` key
 
 
 # 2- Learning & Reflections
