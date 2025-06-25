@@ -10,6 +10,7 @@ from game_stats import GameStats
 import space_ship as ss
 from bullet import Bullet
 from alien import Alien
+from button import Button
 
 
 class AlienInvasion:
@@ -44,6 +45,9 @@ class AlienInvasion:
         # Start Alien Invasion game in an inactive state
         self.game_active: bool = False
 
+        # Make the play button
+        self.play_button = Button(self, "Play")
+
     def run_game(self) -> None:
         """Start the main loop for the game"""
         while True:
@@ -74,6 +78,10 @@ class AlienInvasion:
             bullet.draw_bullet()
         self.ship.blitme()
         self.aliens.draw(self.screen)
+
+        # Draw the play button if the game is inactive
+        if not self.game_active:
+            self.play_button.draw_button()
         # Make the most recently drawn screen visible
         pygame.display.flip()
 
